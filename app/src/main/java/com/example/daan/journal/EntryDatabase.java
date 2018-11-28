@@ -16,7 +16,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE entries (title TEXT, content TEXT, mood TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, _id INTEGER PRIMARY KEY AUTOINCREMENT)";
+        String query = "CREATE TABLE entries (title TEXT, content TEXT, mood TEXT, timestamp DATETIME DEFAULT (datetime('now', 'localtime')), _id INTEGER PRIMARY KEY AUTOINCREMENT)";
         db.execSQL(query);
 
     }
