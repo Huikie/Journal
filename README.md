@@ -1,2 +1,2 @@
 # Journal
-![](https://github.com/Huikie/Friendsr/blob/master/doc/friendsr2.png)
+![](https://github.com/Huikie/Journal/blob/master/doc/first_screen_journal.png)
