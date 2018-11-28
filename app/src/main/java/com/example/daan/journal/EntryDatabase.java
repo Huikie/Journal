@@ -3,6 +3,7 @@ package com.example.daan.journal;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
@@ -15,9 +16,8 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE entries (title TEXT, content TEXT, mood TEXT, timestamp default (strftime('%s','now')), _id INTEGER PRIMARY KEY AUTOINCREMENT)";
+        String query = "CREATE TABLE entries (title TEXT, content TEXT, mood TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, _id INTEGER PRIMARY KEY AUTOINCREMENT)";
         db.execSQL(query);
-        //db.delete("entries",null,null);
 
     }
 
@@ -51,12 +51,11 @@ public class EntryDatabase extends SQLiteOpenHelper {
         values.put("title", entry.getTitle());
         values.put("content", entry.getContent());
         values.put("mood", entry.getMood());
-//        values.put("timestamp", entry.getTimestamp().toString());
         db.insert("entries", null, values);
     }
     public void delete(long id){
         String id_string = Long.toString(id);
         SQLiteDatabase db = getWritableDatabase();
-        db.delete("entries","_id = ?",new String[]{id_string});
+        db.delete("entries","_id = ?", new String[]{id_string});
     }
 }

@@ -23,7 +23,27 @@ public class MainActivity extends AppCompatActivity {
         journalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int i = position;
+                Cursor clickedJournal = (Cursor) parent.getItemAtPosition(i);
 
+                int title_index = clickedJournal.getColumnIndex("title");
+                String title_txt = clickedJournal.getString(title_index);
+
+                int timestamp_index = clickedJournal.getColumnIndex("timestamp");
+                String timestamp_txt = clickedJournal.getString(timestamp_index);
+
+                int mood_index = clickedJournal.getColumnIndex("mood");
+                String mood_txt = clickedJournal.getString(mood_index);
+
+                int content_index = clickedJournal.getColumnIndex("content");
+                String content_txt = clickedJournal.getString(content_index);
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("title_txt", title_txt);
+                intent.putExtra("timestamp_txt", timestamp_txt);
+                intent.putExtra("mood_txt", mood_txt);
+                intent.putExtra("content_txt", content_txt);
+                startActivity(intent);
             }
         });
         journalList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -33,14 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 Cursor clickedJournal = (Cursor) parent.getItemAtPosition(i);
                 int ID_index = clickedJournal.getColumnIndex("_id");
                 long journal_ID = clickedJournal.getInt(ID_index);
-                //EntryDatabase db = EntryDatabase.getInstance(getApplicationContext());
                 db.delete(journal_ID);
                 updateData();
                 return true;
             }
         });
 
-        //EntryDatabase db = EntryDatabase.getInstance(getApplicationContext());
         Cursor cursor = db.selectAll();
         adapter = new EntryAdapter(this,R.layout.entry_row,cursor);
         journalList.setAdapter(adapter);
@@ -49,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-
-
+        updateData();
     }
 public void create_Journal(View view) {
     Intent intent = new Intent(MainActivity.this, InputActivity.class);

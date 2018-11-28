@@ -1,20 +1,20 @@
 package com.example.daan.journal;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class JournalEntry implements Serializable {
-    private String title, content;
-    private Timestamp timestamp;
-    private Integer id, mood;
+    private String title, content, mood, timestamp;
+    private Integer id;
 
     // Constructor
-    public JournalEntry(String title, String content, Timestamp timestamp, Integer id, Integer mood) {
+    public JournalEntry(String title, String content,String timestamp, Integer id, String mood) {
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
         this.id = id;
-        this.id = mood;
+        this.mood = mood;
     }
     // Getters
     public String getTitle() {
@@ -25,17 +25,18 @@ public class JournalEntry implements Serializable {
         return content;
     }
 
-    public Timestamp getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
+    }
+
+    public String getMood() {
+        return mood;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getMood() {
-        return mood;
-    }
 
     // Setters
     public void setTitle(String title) {
@@ -46,7 +47,7 @@ public class JournalEntry implements Serializable {
         this.content = content;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -54,7 +55,7 @@ public class JournalEntry implements Serializable {
         this.id = id;
     }
 
-    public void setMood(Integer mood) {
+    public void setMood(String mood) {
         this.mood = mood;
     }
 }
