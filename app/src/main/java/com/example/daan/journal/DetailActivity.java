@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -24,8 +25,9 @@ public class DetailActivity extends AppCompatActivity {
         show_Timestamp.setText(timestamp_txt);
 
         String mood_txt = intent.getStringExtra("mood_txt");
-        TextView show_Mood = findViewById(R.id.Show_mood);
-        show_Mood.setText(mood_txt);
+        int mood_id = getResources().getIdentifier(mood_txt , "drawable", getPackageName());
+        ImageView show_Mood = findViewById(R.id.Show_mood);
+        show_Mood.setImageResource(mood_id);
 
         String content_txt = intent.getStringExtra("content_txt");
         TextView show_Content = findViewById(R.id.Show_content);

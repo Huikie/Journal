@@ -5,11 +5,11 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class JournalEntry implements Serializable {
-    private String title, content, mood, timestamp;
-    private Integer id;
+    private String title, content, timestamp;
+    private Integer id, mood;
 
     // Constructor
-    public JournalEntry(String title, String content,String timestamp, Integer id, String mood) {
+    public JournalEntry(String title, String content,String timestamp, Integer id, Integer mood) {
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
@@ -29,7 +29,7 @@ public class JournalEntry implements Serializable {
         return timestamp;
     }
 
-    public String getMood() {
+    public Integer getMood() {
         return mood;
     }
 
@@ -55,7 +55,7 @@ public class JournalEntry implements Serializable {
         this.id = id;
     }
 
-    public void setMood(String mood) {
+    public void setMood(Integer mood) {
         this.mood = mood;
     }
 }

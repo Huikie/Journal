@@ -2,7 +2,9 @@ package com.example.daan.journal;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
@@ -22,9 +24,9 @@ public class EntryAdapter extends ResourceCursorAdapter {
         Entry_title.setText(title_txt);
 
         int mood_index = cursor.getColumnIndex("mood");
-        String mood_txt = cursor.getString(mood_index);
-        TextView Entry_mood = view.findViewById(R.id.Entry_mood);
-        Entry_mood.setText(mood_txt);
+        int mood_id = cursor.getInt(mood_index);
+        ImageView Entry_mood = view.findViewById(R.id.Entry_mood_image);
+        Entry_mood.setImageResource(mood_id);
 
         int timestamp_index = cursor.getColumnIndex("timestamp");
         String timestamp_txt = cursor.getString(timestamp_index);

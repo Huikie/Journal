@@ -33,14 +33,38 @@
         android:orientation="horizontal"
         android:padding="12dp">
 
-        <EditText
-            android:id="@+id/input_Mood"
+        <ImageButton
+            android:id="@+id/chill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="Mood"
-            android:inputType="textPersonName" />
+            android:onClick="chooseMood"
+            app:srcCompat="@drawable/sunglasses" />
+
+        <ImageButton
+            android:id="@+id/laugh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="chooseMood"
+            app:srcCompat="@drawable/laugh" />
+
+        <ImageButton
+            android:id="@+id/cry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="chooseMood"
+            app:srcCompat="@drawable/cry" />
+
+        <ImageButton
+            android:id="@+id/angry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/angry"
+            android:onClick="chooseMood" />
+
     </LinearLayout>
 
     <Button
