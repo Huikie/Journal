@@ -1,15 +1,11 @@
 package com.example.daan.journal;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Timestamp;
 
 public class InputActivity extends AppCompatActivity {
     String mood;
@@ -19,6 +15,9 @@ public class InputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
     }
+
+    /**Method that lets the user choose the mood that he/she is in
+     * and gives the user information on their choice.*/
     public void chooseMood(View view){
         switch(view.getId()){
             case R.id.angry:
@@ -39,6 +38,8 @@ public class InputActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    /**Method that let the user add a journal entry to the database.*/
     public void addEntry(View view) {
 
         TextView input_Title = findViewById(R.id.input_Title);
@@ -54,4 +55,5 @@ public class InputActivity extends AppCompatActivity {
         db.insert(entry);
         finish();
     }
+
 }

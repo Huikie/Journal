@@ -1,9 +1,8 @@
 package com.example.daan.journal;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Timestamp;
 
+// Implements Serializable to be able to pass instances of this class using an intent.
 public class JournalEntry implements Serializable {
     private String title, content, timestamp;
     private Integer id, mood;
@@ -16,6 +15,7 @@ public class JournalEntry implements Serializable {
         this.id = id;
         this.mood = mood;
     }
+
     // Getters
     public String getTitle() {
         return title;
@@ -23,10 +23,6 @@ public class JournalEntry implements Serializable {
 
     public String getContent() {
         return content;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
     }
 
     public Integer getMood() {
@@ -37,7 +33,6 @@ public class JournalEntry implements Serializable {
         return id;
     }
 
-
     // Setters
     public void setTitle(String title) {
         this.title = title;
@@ -47,15 +42,8 @@ public class JournalEntry implements Serializable {
         this.content = content;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setMood(Integer mood) {
-        this.mood = mood;
-    }
 }

@@ -2,17 +2,18 @@ package com.example.daan.journal;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Gives access to the database and the adapter.
     EntryDatabase db;
     EntryAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         ListView journalList = findViewById(R.id.Journal_list);
         db = EntryDatabase.getInstance(getApplicationContext());
 
+        // Putting information about a clicked journal to the detail activity on click.
         journalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Delete a clicked journal on long click.
         journalList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,16 +68,24 @@ public class MainActivity extends AppCompatActivity {
         journalList.setAdapter(adapter);
 
     }
+
     @Override
+    /**Method that updates data on resume.*/
     public void onResume(){
         super.onResume();
         updateData();
     }
-public void create_Journal(View view) {
-    Intent intent = new Intent(MainActivity.this, InputActivity.class);
-    startActivity(intent);
-}
+
+    /**Function that directs the user to the activity where he/she can create a journal entry.*/
+    public void create_Journal(View view) {
+        Intent intent = new Intent(MainActivity.this, InputActivity.class);
+        startActivity(intent);
+    }
+
+    /**Method that updates the database every time something is changed.*/
     private void updateData(){
+
+        // Put in a new cursor for the updated data.
         adapter.swapCursor(db.selectAll());
     }
 
