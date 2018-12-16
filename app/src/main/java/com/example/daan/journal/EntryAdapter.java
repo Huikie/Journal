@@ -12,7 +12,6 @@ public class EntryAdapter extends ResourceCursorAdapter {
     //Constructor
     public EntryAdapter(Context context, int layout, Cursor cursor){
         super(context, layout, cursor);
-
     }
 
     @Override
