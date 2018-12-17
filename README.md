@@ -8,7 +8,7 @@ For this project, I've created an app that represents a journal. In this app, yo
 ## Implemented extra's
 - When the user creates a journal entry and he/she chooses a mood, feedback is given on which mood the user chose. 
 
-This extra is shown in the section "Screenshots of the app".
+This extra is shown in the section "Screenshots of the app" (third image).
 
 ## Screenshots of the app
 ![](https://github.com/Huikie/Journal/blob/master/doc/begin.png)
